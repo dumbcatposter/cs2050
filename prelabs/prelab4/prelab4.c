@@ -1,6 +1,6 @@
 #include "prelab4.h"
 
-void *createArray(int n,  int dataTypeSize)
+void *createArray(const int n,  const int dataTypeSize)
 {
     if(n<0) 
     {
@@ -17,12 +17,12 @@ void *createArray(int n,  int dataTypeSize)
     returnArray++;
     return (void*) returnArray;
 }
-int getArraySize(void* array)
+int getArraySize(void* const array)
 {
     int* returnArray = (int*) array - 1;
     return returnArray[0];
 }
-void freeArray(void* array)
+void freeArray(void* const array)
 {
     int *head = (int*) array - 1;
     free(head);
