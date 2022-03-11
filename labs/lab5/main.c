@@ -30,6 +30,7 @@ int main(void)
     //Testing error helper functions
     assert(getWithMostAccidents(NULL) == NULL);
     assert(getVin(NULL) == -1);
+    //assert(getVin(NULL)==0);
     Car * emptyarray  = createArray(sizeof(Car), 0);
     printCars(emptyarray);
     freeArray(emptyarray);
