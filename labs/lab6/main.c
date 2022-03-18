@@ -1,9 +1,11 @@
 #include "lab6.h"
 #include<assert.h>
 #include<math.h>
+#include<string.h>
 
-int main(void)
+int main(int argc, char **argv)
 {
+    srand(atoi(argv[1]));
     Node * carList = initList();
     const int numCars = 5;
     Car * car;
@@ -16,7 +18,7 @@ int main(void)
     for(Node * iCar = carList; iCar != NULL; iCar = iCar->next)
     {
         car = iCar->data;
-        car->milesDriven =  12; //fmod(rand(), 100000.0);
+        car->milesDriven =  fmod(rand(), 100000.0);
         car->vin = (int) rand() % 100;
         car->numberOfAccidents = 10;
     }
