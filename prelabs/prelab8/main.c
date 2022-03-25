@@ -2,7 +2,7 @@
 #include<assert.h>
 int main(void)
 {
-    int a=1, b=2, c=3, d=4;
+    int a=0, b=1, c=2, d=3, e=4;
     Queue queue = queueInit();
     enqueue(&a, queue);
     assert(getQueueErrorCode(queue) == 0);
@@ -11,6 +11,8 @@ int main(void)
     enqueue(&c, queue);
     assert(getQueueErrorCode(queue) == 0);
     enqueue(&d, queue);
+    enqueue(&e, queue);
+    assert(dequeue(queue) == &a);
     printf("Initial queue size: %d\n", getQueueSize(queue));
 
     for(int i = 1; i<5; i++)
