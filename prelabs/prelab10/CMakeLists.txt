@@ -7,5 +7,5 @@ include_directories(.)
 
 add_executable(prelab11
         main.c
-        prelab11.c
-        prelab11.h)
+        prelab10.c
+        prelab10.h)
