@@ -8,6 +8,7 @@
 typedef struct empstruct
 {
     int id, ssn;
+    char *Name;
 } Employee;
 typedef struct nstruct
 {
@@ -22,7 +23,7 @@ typedef struct empdb
 
 EmpDatabase createSearchableEmployeeDB(); // Just inits your struct
 EmpDatabase insertEmp(Employee *employee, EmpDatabase empdb);
-Employee * findEmpBySSN(int, EmpDatabase);
-Employee * findEmpByID(int, EmpDatabase);
+Employee * findEmpBySSN(int, EmpDatabase*);
+Employee * findEmpByID(int, EmpDatabase*);
 void freeEmpDatabase(EmpDatabase);
 int getErrorCode(EmpDatabase);
