@@ -17,3 +17,5 @@ void printInOrder(BST *tree);
 
 // O(log(n))
 int getMin(BST *tree);
+
+void printInOrderToFile(BST *tree, FILE *fp);
