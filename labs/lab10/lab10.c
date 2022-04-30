@@ -151,6 +151,7 @@ void printInOrderToFile(BST *tree, FILE *fp)
     if(tree->size <= 0) {return;}
     int *flattenedTree = malloc(sizeof(int)*tree->size);
     int *index = malloc(sizeof(int));
+    *index = 0;
     if(flattenedTree == NULL) {return;}
     ArrayList arrayList = {flattenedTree, index};
     flattenBST(tree->root, arrayList);
@@ -171,6 +172,7 @@ int getMin(BST *tree)
 {
     int *flattenedTree = malloc(sizeof(int)*tree->size);
     int *index = malloc(sizeof(int));
+    *index = 0;
     ArrayList arrayList = {flattenedTree, index};
     flattenBST(tree->root, arrayList);
     int min = arrayList.array[0];

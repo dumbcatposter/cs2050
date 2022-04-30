@@ -20,7 +20,7 @@ int main()
 
     puts("Inserting one million random elements into the BST...");
     Timer = clock();
-    for(int i = 0; i < 1000000; i++)
+    for(int i = 0; i < 100; i++)
     {
         element = rand() % 20000002;
         insertBST(bst, element);
