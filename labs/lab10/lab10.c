@@ -110,13 +110,29 @@ int BSTContains(BST *tree, int data)
 }
 
 // Prints the contents of an integer array, and then a new line
-void printIntArray(int*array, int size){
+void printIntArrayToFile(int*array, int size, FILE *fp){
+    if(size > 1000)
+    {
+        puts("Absolutely huge array. Truncating to first and last 10 ints.");
+        for(int i = 0; i < 10; i++)
+        {
+            fprintf(fp, "%d, ", array[i]);
+        }
+        fprintf(fp,"... ,");
+        for(int i = size-10; i < size; i++)
+        {
+            fprintf(fp, "%d, ", array[i]);
+        }
+        fprintf(fp, "\n");
+        return;
+    }
     for(int i = 0; i < size; i++)
     {
-        printf("%d, ", array[i]);
+        fprintf(fp, "%d, ", array[i]);
     }
-    printf("\n");
+    fprintf(fp,"\n");
 }
+
 //flattens a binary search tree
 void flattenBST(Node *node, ArrayList arrayList)
 {
@@ -127,9 +143,9 @@ void flattenBST(Node *node, ArrayList arrayList)
     flattenBST(node->right, arrayList);
 
 }
-// O(n)
-// Prints all the elements of BST <tree> in sorted order
-void printInOrder(BST *tree)
+
+
+void printInOrderToFile(BST *tree, FILE *fp)
 {
     if(tree == NULL) {return;}
     if(tree->size <= 0) {return;}
@@ -138,9 +154,15 @@ void printInOrder(BST *tree)
     if(flattenedTree == NULL) {return;}
     ArrayList arrayList = {flattenedTree, index};
     flattenBST(tree->root, arrayList);
-    printIntArray(arrayList.array, tree->size);
+    printIntArrayToFile(arrayList.array, tree->size, fp);
     free(index);
     free(flattenedTree);
+}
+// O(n)
+// Prints all the elements of BST <tree> in sorted order
+void printInOrder(BST *tree)
+{
+    printInOrderToFile(tree, stdout);
 }
 
 // O(log(n))
@@ -152,6 +174,7 @@ int getMin(BST *tree)
     ArrayList arrayList = {flattenedTree, index};
     flattenBST(tree->root, arrayList);
     int min = arrayList.array[0];
+    free(index);
     free(flattenedTree);
     return min;
 }
